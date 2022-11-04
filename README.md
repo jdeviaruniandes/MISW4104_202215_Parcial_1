@@ -1,6 +1,12 @@
 # Parcial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+This project is to solve [Parcial](https://www.dropbox.com/s/810ko2ghwa2uxxc/Parcial_Grupo1.docx)
+
+Was made for Johnattan Fernando Devia Rojas, for the master degree in software engineer.
+
+## Install dependencies
+
+Run `npm install`
 
 ## Development server
 
