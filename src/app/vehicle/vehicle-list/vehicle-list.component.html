@@ -1,6 +1,16 @@
+<div class="d-flex loading-status justify-content-center m-5" *ngIf="loading">
+  <div class="spinner-border text-primary" role="status"></div>
+</div>
 
-<div class="row">
-  <div class="col-md-7 col-sm-12">
+<div class="d-flex justify-content-center m-5" *ngIf="!loading && error">
+  <div class="alert alert-danger" role="alert">
+    Error interno, No hemos podido conectar con el servidor
+  </div>
+</div>
+
+
+<div class="row" *ngIf="!loading && !error">
+  <div class="col-md-8 col-sm-12">
     <div class="table-responsive">
       <table class="table table-striped vehicles-table">
         <thead class="thead-dark">
@@ -12,6 +22,10 @@
         </tr>
         </thead>
         <tbody>
+
+        <tr *ngIf="vehicles.length===0">
+          <th colspan="4" scope="row" class="text-center error-loading">No se han encontrado vehiculos para mostrar</th>
+        </tr>
         <tr *ngFor="let vehicle of vehicles" class="vehicle-info">
           <th scope="row">{{ vehicle.id }}</th>
           <td>{{ vehicle.marca }}</td>

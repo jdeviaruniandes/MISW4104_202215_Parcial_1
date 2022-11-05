@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Vehicle} from "../vehicle";
+import {VehicleService} from "../vehicle.service";
 
 
 
@@ -10,10 +11,18 @@ import {Vehicle} from "../vehicle";
 })
 export class VehicleListComponent implements OnInit {
   vehicles: Vehicle[] = [];
+  loading:boolean =true;
+  error:boolean = false
 
-  constructor() { }
+  constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
+    this.vehicleService.getVehicles().subscribe({
+      next: () => {},
+      error: () => {this.error = true}
+    }).add(() => {
+      this.loading = false
+    })
   }
 
 }
