@@ -7,7 +7,8 @@ import {faker} from "@faker-js/faker";
 import {generateVehicles} from "../vehicle-helpers";
 import {HttpClientModule} from "@angular/common/http";
 import {VehicleBrandsPipe} from "./vehicle-brands.pipe";
-
+import { throwError } from 'rxjs';
+import {VehicleService} from "../vehicle.service";
 
 describe('VehiculeListComponent', () => {
   let component: VehicleListComponent;
@@ -72,6 +73,25 @@ describe('VehiculeListComponent', () => {
     fixture.detectChanges();
     const quantity = component.vehicles.length
     expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
+
+    for (const vehicle of component.vehicles){
+      expect(vehicle.id).toBeTruthy()
+      expect(vehicle.linea).toBeTruthy()
+      expect(vehicle.marca).toBeTruthy()
+      expect(vehicle.modelo).toBeTruthy()
+      expect(vehicle.imagen).toBeTruthy()
+      expect(vehicle.referencia).toBeTruthy()
+      expect(vehicle.kilometraje).toBeTruthy()
+      expect(vehicle.color).toBeTruthy()
+    }
+
+  });
+
+  it('should change status to show error on fail', async () => {
+    spyOn(component.vehicleService,'getVehicles').and.returnValue(throwError(() => new Error('On Response error')));
+    component.ngOnInit()
+    fixture.detectChanges();
+    expect(component.error).toBeTrue()
   });
 
 

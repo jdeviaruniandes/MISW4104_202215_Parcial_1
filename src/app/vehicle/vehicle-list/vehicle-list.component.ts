@@ -14,7 +14,7 @@ export class VehicleListComponent implements OnInit {
   loading:boolean = false;
   error:boolean = false
 
-  constructor(private vehicleService: VehicleService) { }
+  constructor(public vehicleService: VehicleService) { }
 
   ngOnInit(): void {
     this.vehicleService.getVehicles().subscribe({
@@ -25,7 +25,9 @@ export class VehicleListComponent implements OnInit {
         }
         this.vehicles = vehiclesCollection;
       },
-      error: () => {this.error = true}
+      error: () => {
+        this.error = true
+      }
     }).add(() => {
       this.loading = false
     })

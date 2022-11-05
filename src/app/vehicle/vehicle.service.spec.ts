@@ -23,6 +23,10 @@ describe('VehicleService', () => {
           expect(vehicle.linea).toBeTruthy()
           expect(vehicle.marca).toBeTruthy()
           expect(vehicle.modelo).toBeTruthy()
+          expect(vehicle.imagen).toBeTruthy()
+          expect(vehicle.referencia).toBeTruthy()
+          expect(vehicle.kilometraje).toBeTruthy()
+          expect(vehicle.color).toBeTruthy()
         }
 
         done();
