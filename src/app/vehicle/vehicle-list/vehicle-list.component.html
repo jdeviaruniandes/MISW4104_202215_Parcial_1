@@ -36,5 +36,11 @@
       </table>
     </div>
 
+    <div class="summary-brands">
+      <div class="summary-brand" *ngFor="let brandSummary of vehicles | VehicleBrands">
+        Total {{brandSummary.brand}}: {{brandSummary.quantity}}
+      </div>
+    </div>
+
   </div>
 </div>

@@ -6,6 +6,7 @@ import {By} from "@angular/platform-browser";
 import {faker} from "@faker-js/faker";
 import {generateVehicles} from "../vehicle-helpers";
 import {HttpClientModule} from "@angular/common/http";
+import {VehicleBrandsPipe} from "./vehicle-brands.pipe";
 
 
 describe('VehiculeListComponent', () => {
@@ -16,7 +17,7 @@ describe('VehiculeListComponent', () => {
   const generatedVehicles = generateVehicles(fakeVehicles);
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VehicleListComponent ],
+      declarations: [ VehicleListComponent, VehicleBrandsPipe ],
       imports: [HttpClientModule]
     })
     .compileComponents();
@@ -56,11 +57,23 @@ describe('VehiculeListComponent', () => {
     expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
   });
 
+  it('should show quantity of brands, the content is checked in pipe test', async () => {
+    component.loading = false
+    let brands:{[key:string]: boolean} = {}
+    for (const vehicle of component.vehicles){
+      brands[vehicle.marca] = true
+    }
+    fixture.detectChanges();
+    expect(debug.queryAll(By.css('div.summary-brands .summary-brand'))).toHaveSize(Object.values(brands).length)
+  });
+
   it('should create a list of vehicles based on return quantity using online service', async () => {
     await fixture.whenStable();
     fixture.detectChanges();
     const quantity = component.vehicles.length
     expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
   });
+
+
 
 });
