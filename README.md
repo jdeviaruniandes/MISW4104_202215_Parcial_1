@@ -4,6 +4,14 @@ This project is to solve [Parcial](https://www.dropbox.com/s/810ko2ghwa2uxxc/Par
 
 Was made for Johnattan Fernando Devia Rojas, for the master degree in software engineer.
 
+## Process
+
+1. Read [Parcial](https://www.dropbox.com/s/810ko2ghwa2uxxc/Parcial_Grupo1.docx)
+2. Generate module with cli: `ng generate module Vehicule`
+2. Generate module with cli: `ng generate component VehiculeList`
+3. Generate model Vehicule from endpoint
+3. Generate expected tests for component list vehicles
+
 ## Install dependencies
 
 Run `npm install`

@@ -1,77 +1,54 @@
-import {Artwork} from "../artwork/artwork";
+export class Vehicle {
+  private readonly _id: number
+  private readonly _marca: string
+  private readonly _linea: string
+  private readonly _referencia: string
+  private readonly _modelo: number
+  private readonly _kilometraje: number
+  private readonly _color: string
+  private readonly _imagen: string
 
-export interface MuseumExhibitions { id:number,name:string,description:string }
-export interface MuseumImage { id: number, source: string, altText:string, height:number, width: number }
-export const AbstractLength = 11
-
-export class Museum {
-  private readonly _id: number;
-  private readonly _name: string;
-  private readonly _description: string;
-  private readonly _address: string;
-  private readonly _city: string;
-  private _image?:MuseumImage = undefined;
-  private readonly _artworks: Artwork[];
-  private readonly _exhibitions: MuseumExhibitions[];
-
-  constructor(
-   id: number,
-   name: string,
-   description: string,
-   address: string,
-   city: string,
-   artworks: Artwork[],
-   exhibitions: MuseumExhibitions[],
-   image?:MuseumImage
-  ) {
-    this._id = id;
-    this._name = name;
-    this._description = description;
-    this._address = address;
-    this._city = city;
-    this._exhibitions = exhibitions;
-    this._artworks = artworks;
-    this._image = image;
+  constructor(vehicle:{id:number,marca:string,linea:string,referencia:string,modelo:number,kilometraje:number,color:string,imagen:string}) {
+    this._id = vehicle.id;
+    this._marca = vehicle.marca;
+    this._linea = vehicle.linea;
+    this._referencia = vehicle.referencia;
+    this._modelo = vehicle.modelo;
+    this._kilometraje = vehicle.kilometraje;
+    this._color = vehicle.color;
+    this._imagen = vehicle.imagen;
   }
 
-  get short_text(){
-    return this._description.split(/\s+/).slice(0, AbstractLength).join(" ");
-  }
 
   get id(): number {
     return this._id;
   }
 
-  get name(): string {
-    return this._name;
+  get marca(): string {
+    return this._marca;
   }
 
-  get description(): string {
-    return this._description;
+  get linea(): string {
+    return this._linea;
   }
 
-  get address(): string {
-    return this._address;
+  get referencia(): string {
+    return this._referencia;
   }
 
-  get city(): string {
-    return this._city;
+  get modelo(): number {
+    return this._modelo;
   }
 
-  get image():MuseumImage|undefined {
-    return this._image;
+  get kilometraje(): number {
+    return this._kilometraje;
   }
 
-  get artworks(): Artwork[] {
-    return this._artworks;
+  get color(): string {
+    return this._color;
   }
 
-  get exhibitions(): MuseumExhibitions[] {
-    return this._exhibitions;
+  get imagen(): string {
+    return this._imagen;
   }
-
-  set image(value: MuseumImage|undefined) {
-    this._image = value;
-  }
-
 }
