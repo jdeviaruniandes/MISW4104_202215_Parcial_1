@@ -1,6 +1,8 @@
 import {faker} from "@faker-js/faker";
 import {Vehicle} from "./vehicle";
 
+export interface VehicleBrandStructure {brand:string,quantity:number}
+
 export function generateVehicles(quantity:number):Vehicle[]
 {
   const vehicles:Vehicle[] = []
