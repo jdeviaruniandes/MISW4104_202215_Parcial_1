@@ -33,7 +33,7 @@ describe('VehiculeListComponent', () => {
 
   it('should create a list of vehicles based on return quantity', () => {
     const quantity = component.vehicles.length
-    expect(debug.queryAll(By.css('div.list-group .vehicle-info'))).toHaveSize(quantity)
+    expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
   });
 
 });
