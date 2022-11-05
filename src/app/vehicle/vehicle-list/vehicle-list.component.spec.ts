@@ -56,4 +56,11 @@ describe('VehiculeListComponent', () => {
     expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
   });
 
+  it('should create a list of vehicles based on return quantity using online service', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const quantity = component.vehicles.length
+    expect(debug.queryAll(By.css('table.vehicles-table .vehicle-info'))).toHaveSize(quantity)
+  });
+
 });
